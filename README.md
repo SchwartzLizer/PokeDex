@@ -23,3 +23,6 @@ This App Get Data From https://pokeapi.co to show in iphone
 # Comment
 - Didn't include iPad version
 - This app can use only in portrait
+
+<a href="https://imgur.com/KVwPn3B"><img src="https://i.imgur.com/KVwPn3B.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/G6SHN3N"><img src="https://i.imgur.com/G6SHN3N.png" title="source: imgur.com" /></a>
