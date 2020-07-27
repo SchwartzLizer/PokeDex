@@ -6,10 +6,10 @@ This App Get Data From https://pokeapi.co to show in iphone
 
 # What thing to show
 - All Pokemon in list
-- Data For pokemon seleted
+- Data For pokemon seleted etc weight,height , ...
 
 # Function
-- 
+- Search Pokemon
 
 # Framework
 1.Rxswift
