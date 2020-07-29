@@ -38,7 +38,7 @@ class PokemonService{
     }
     
     func getPokemons()-> Observable<(HTTPURLResponse,PokemonSearchResult)>{
-        return RxAlamofire.requestDecodable(.get, "https://pokeapi.co/api/v2/pokemon?limit=2000").debug();
+        return RxAlamofire.requestDecodable(.get, "https://pokeapi.co/api/v2/pokemon?limit=2000");
     }
     
     func getPokemonDefaultSprite(pokemonId:Int)-> Observable<UIImage>{

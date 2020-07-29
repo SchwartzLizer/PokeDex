@@ -25,7 +25,9 @@ class PokemonSearchViewModel{
         _pokemonService.getPokemons().map { (HTTPURLResponse, PokemonSearchResult) -> Array<PokemonSearchItem> in
             return PokemonSearchResult.results
         }.subscribe(onNext:{r in
-            self._allPokemons = r
+            self._allPokemons = r.sorted(by: { (item1, item2) -> Bool in
+                return item1.name<item2.name
+            })
         }).disposed(by: _disposeBag)
         // Handler text searching with throttle
         text.debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).distinctUntilChanged().map { (t) -> Array<PokemonSearchItem> in
