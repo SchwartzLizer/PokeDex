@@ -65,11 +65,19 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <gestureRecognizers/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="a9I-fg-m6j">
+                                                    <rect key="frame" x="40" y="30" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="a9I-fg-m6j" firstAttribute="top" secondItem="3Qz-ld-dTf" secondAttribute="top" constant="30" id="F5z-RW-4DJ"/>
+                                                <constraint firstItem="a9I-fg-m6j" firstAttribute="leading" secondItem="3Qz-ld-dTf" secondAttribute="leading" constant="40" id="Vr9-rC-40L"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="backgroundView" destination="Tnw-Zw-VSY" id="87z-kQ-9MC"/>
+                                            <outlet property="loadingIndicator" destination="a9I-fg-m6j" id="Fph-dY-hc8"/>
                                             <outlet property="nameLabel" destination="n9d-53-6IG" id="Jh3-nV-Seg"/>
                                             <outlet property="pokemonImage" destination="Tnw-Zw-VSY" id="QdR-bi-sc3"/>
                                             <segue destination="2fq-vy-wYo" kind="show" identifier="ShowPokemonDetail" id="wKa-kM-scz"/>
@@ -703,12 +711,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="6Uu-ya-YId">
+                                <rect key="frame" x="68" y="156" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="o7m-LI-1rL" firstAttribute="top" secondItem="If5-ZK-wo4" secondAttribute="bottom" constant="20" id="2BF-xx-sop"/>
                             <constraint firstItem="6GW-2I-fX3" firstAttribute="trailing" secondItem="34B-sm-EPj" secondAttribute="trailing" constant="7" id="3hD-8t-ACv"/>
                             <constraint firstItem="lFV-1M-Bme" firstAttribute="leading" secondItem="If5-ZK-wo4" secondAttribute="trailing" constant="8" id="Aqj-Ba-SeM"/>
+                            <constraint firstItem="6Uu-ya-YId" firstAttribute="top" secondItem="6GW-2I-fX3" secondAttribute="top" constant="68" id="BO0-ka-GPb"/>
+                            <constraint firstItem="6Uu-ya-YId" firstAttribute="leading" secondItem="6GW-2I-fX3" secondAttribute="leading" constant="68" id="EzS-0I-z6V"/>
                             <constraint firstItem="lFV-1M-Bme" firstAttribute="top" secondItem="6GW-2I-fX3" secondAttribute="top" constant="8" id="JUa-2H-UxM"/>
                             <constraint firstItem="If5-ZK-wo4" firstAttribute="top" secondItem="6GW-2I-fX3" secondAttribute="top" constant="8" id="QFa-bY-sP0"/>
                             <constraint firstItem="34B-sm-EPj" firstAttribute="leading" secondItem="lFV-1M-Bme" secondAttribute="trailing" constant="1" id="QgP-7i-yi6"/>
@@ -731,6 +744,7 @@
                         <outlet property="height" destination="oZh-Gp-Mai" id="Ksz-KM-mJV"/>
                         <outlet property="hp" destination="UXf-gZ-f6T" id="lor-h1-Bs0"/>
                         <outlet property="image" destination="If5-ZK-wo4" id="K9A-V8-uF2"/>
+                        <outlet property="loadingIndicator" destination="6Uu-ya-YId" id="QLv-Wh-z5M"/>
                         <outlet property="order" destination="34B-sm-EPj" id="JyD-nJ-0Rt"/>
                         <outlet property="specialAttack" destination="HYu-65-47V" id="SBJ-dm-a1y"/>
                         <outlet property="specialDefend" destination="Uhx-Nj-qCa" id="rmi-cZ-gFQ"/>
