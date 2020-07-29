@@ -25,7 +25,9 @@ class PokemonSearchViewController: UIViewController {
         pokemonSearchBar.rx.text.orEmpty.bind(to: _viewModel.text)
         .disposed(by: _disposeBag)
         _viewModel.filteredPokemons.asObservable().bind(to: pokemonCollectionView.rx.items(cellIdentifier: "pokecell", cellType: PokeCell.self)){index, model, cell in
+            
             cell.configureCell(pokemon: model)
+            
         }.disposed(by: _disposeBag)
     }
     

@@ -23,7 +23,11 @@ class Helper{
 
 
 class PokemonService{
-    func GetPokemonByName(pokemonName:String) -> Observable<(HTTPURLResponse,Pokemon)>{
+    private var _imageCache = NSCache<NSString,UIImage>()
+    
+    static var Shared = PokemonService()
+    
+    func getPokemonByName(pokemonName:String) -> Observable<(HTTPURLResponse,Pokemon)>{
         return RxAlamofire.request(.get, "https://pokeapi.co/api/v2/pokemon/\(pokemonName)")
             .validate(statusCode:200..<300)
             .responseData()
@@ -33,8 +37,28 @@ class PokemonService{
         };
     }
     
-    func GetPokemons()-> Observable<(HTTPURLResponse,PokemonSearchResult)>{
+    func getPokemons()-> Observable<(HTTPURLResponse,PokemonSearchResult)>{
         return RxAlamofire.requestDecodable(.get, "https://pokeapi.co/api/v2/pokemon?limit=2000").debug();
+    }
+    
+    func getPokemonDefaultSprite(pokemonId:Int)-> Observable<UIImage>{
+        let key = String(pokemonId)
+        let defaultSpritesURL = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemonId).png")!
+        // Check image in cache first
+        if let cachedImage = _imageCache.object(forKey: NSString(string:key)){
+            return Observable.just(cachedImage)
+        }else{
+            return RxAlamofire.request(.get, defaultSpritesURL)
+                .validate(statusCode:200..<300)
+                .responseData()
+                .take(1)
+                .map({(httpResponse,data)->UIImage in
+                    let image = UIImage(data:data)!
+                    self._imageCache.setObject(image, forKey: NSString(string:key))
+                    return image
+                })
+                .observeOn(MainScheduler.instance)
+        }
     }
     /*
     

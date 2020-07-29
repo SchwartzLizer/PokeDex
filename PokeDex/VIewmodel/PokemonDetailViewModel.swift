@@ -13,7 +13,7 @@ import Alamofire
 
 class PokemonDetailViewModel{
     private let _disposeBag = DisposeBag()
-    private let _pokemonService:PokemonService
+    private let _pokemonService = PokemonService.Shared
     
     let selectedPokemon = PublishSubject<PokemonSearchItem>()
     
@@ -25,10 +25,9 @@ class PokemonDetailViewModel{
     
     
     init(){
-        self._pokemonService = PokemonService()
         
         let selectedPokeObs = selectedPokemon.map({p in
-            self._pokemonService.GetPokemonByName(pokemonName: p.name)
+            self._pokemonService.getPokemonByName(pokemonName: p.name)
             })
             .switchLatest().publish().refCount()
             

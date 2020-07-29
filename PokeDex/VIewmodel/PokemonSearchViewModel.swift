@@ -12,7 +12,7 @@ import RxCocoa
 
 class PokemonSearchViewModel{
     private let _disposeBag = DisposeBag()
-    private let _pokemonService:PokemonService = PokemonService()
+    private let _pokemonService = PokemonService.Shared
     
     private var _allPokemons = Array<PokemonSearchItem>()
     
@@ -22,7 +22,7 @@ class PokemonSearchViewModel{
     
     init() {
         // Load All Pokemons
-        _pokemonService.GetPokemons().map { (HTTPURLResponse, PokemonSearchResult) -> Array<PokemonSearchItem> in
+        _pokemonService.getPokemons().map { (HTTPURLResponse, PokemonSearchResult) -> Array<PokemonSearchItem> in
             return PokemonSearchResult.results
         }.subscribe(onNext:{r in
             self._allPokemons = r

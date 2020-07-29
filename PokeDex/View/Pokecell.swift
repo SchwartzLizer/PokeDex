@@ -19,22 +19,21 @@ class PokeCell: UICollectionViewCell {
     
     var pokemon: PokemonSearchItem!
     
+    var pokemonService = PokemonService.Shared
+    
+    var _disposeBag = DisposeBag()
+    
     func configureCell(pokemon: PokemonSearchItem){
         
         self.pokemon = pokemon
         
         nameLabel.text = self.pokemon.name.capitalized
         
-        RxAlamofire.request(.get, self.pokemon.defaultSpritesURL!)   .validate(statusCode:200..<300)
-            .responseData()
-            .take(1)
-            .map({(httpResponse,data)->UIImage in
-                return UIImage(data:data)!
-            })
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: {uiImage in
-                self.pokemonImage.image = uiImage
-            }, onError: {_ in })
+        pokemonService.getPokemonDefaultSprite(pokemonId: self.pokemon.id)
+        .subscribe(onNext: {uiImage in
+            self.pokemonImage.image = uiImage
+            }, onError: {_ in }).disposed(by: _disposeBag)
+    
     }
     
     override func prepareForReuse() {
@@ -42,6 +41,7 @@ class PokeCell: UICollectionViewCell {
         pokemon = nil
         nameLabel.text = nil
         pokemonImage.image = nil
+        _disposeBag = DisposeBag()
     }
     
     /*
