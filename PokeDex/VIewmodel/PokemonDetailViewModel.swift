@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Alamofire
 
 class PokemonDetailViewModel{
     private let _disposeBag = DisposeBag()
@@ -23,6 +22,9 @@ class PokemonDetailViewModel{
     
     let pokemonType: PublishSubject<PokemonTypeVM> = PublishSubject <PokemonTypeVM>()
     
+    func loadPokemonSprite(pokemonId:Int)->Observable<UIImage>{
+        return _pokemonService.getPokemonDefaultSprite(pokemonId: pokemonId)
+    }
     
     init(){
         
@@ -63,9 +65,6 @@ class PokemonDetailViewModel{
                     }
                     self.pokemonBaseStat.onNext(pokemonStatVM)
                 }
-                
-                
-                
              }, onError: {error in
                  
              })

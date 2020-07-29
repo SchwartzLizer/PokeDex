@@ -16,6 +16,8 @@ class PokeCell: UICollectionViewCell {
     
     @IBOutlet weak var pokemonImage : UIImageView!
     @IBOutlet weak var nameLabel : UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     
     var pokemon: PokemonSearchItem!
     
@@ -24,15 +26,21 @@ class PokeCell: UICollectionViewCell {
     var _disposeBag = DisposeBag()
     
     func configureCell(pokemon: PokemonSearchItem){
-        
+        loadingIndicator.startAnimating()
         self.pokemon = pokemon
         
         nameLabel.text = self.pokemon.name.capitalized
         
         pokemonService.getPokemonDefaultSprite(pokemonId: self.pokemon.id)
-        .subscribe(onNext: {uiImage in
-            self.pokemonImage.image = uiImage
-            }, onError: {_ in }).disposed(by: _disposeBag)
+            .subscribe(onNext: {uiImage in
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.pokemonImage.image = uiImage
+            }, onError: {_ in
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.pokemonImage.image = #imageLiteral(resourceName: "error")
+            }).disposed(by: _disposeBag)
     
     }
     
@@ -42,6 +50,8 @@ class PokeCell: UICollectionViewCell {
         nameLabel.text = nil
         pokemonImage.image = nil
         _disposeBag = DisposeBag()
+        self.loadingIndicator.isHidden = false
+        self.loadingIndicator.startAnimating()
     }
     
     /*

@@ -27,6 +27,7 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var total: UILabel!
     @IBOutlet weak var Type1: UILabel!
     @IBOutlet weak var Type2: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     private let _disposeBag = DisposeBag()
     //RxSwift : dispose
@@ -36,6 +37,7 @@ class PokemonDetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUpNavBar()
+        loadingIndicator.startAnimating()
 
         
         _viewModel.pokemon  //height show in details
@@ -118,14 +120,17 @@ class PokemonDetailViewController: UIViewController {
         .bind(to: self.total.rx.text)
         .disposed(by: _disposeBag)
         
-        _viewModel.pokemon.subscribe(onNext:{pokemon in
-            if let data = try? Data(contentsOf:pokemon.sprites.frontDefault!){
-                let image = UIImage(data:data)
-                self.image.image = image
-            }
-            else{
-                // Do something with error such as load a placeholder image
-            }
+        _viewModel.pokemon.map({pokemon in
+            return self._viewModel.loadPokemonSprite(pokemonId: pokemon.id)
+            }).switchLatest()
+            .subscribe(onNext:{uiImage in
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.image.image = uiImage
+            },onError: {error in
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.image.image = #imageLiteral(resourceName: "error")
             }).disposed(by: _disposeBag)
     }
     func setUpNavBar() {
