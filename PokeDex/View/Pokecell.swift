@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import RxAlamofire
 
 class PokeCell: UICollectionViewCell {
     
@@ -23,12 +24,31 @@ class PokeCell: UICollectionViewCell {
         self.pokemon = pokemon
         
         nameLabel.text = self.pokemon.name.capitalized
-        if let data = try? Data(contentsOf:self.pokemon.defaultSpritesURL!){
-            let image = UIImage(data:data)
-            pokemonImage.image = image
-        }
-        else{
-            // Do something with error such as load a placeholder image
-        }
-    }	
+        
+        RxAlamofire.request(.get, self.pokemon.defaultSpritesURL!)   .validate(statusCode:200..<300)
+            .responseData()
+            .take(1)
+            .map({(httpResponse,data)->UIImage in
+                return UIImage(data:data)!
+            })
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {uiImage in
+                self.pokemonImage.image = uiImage
+            }, onError: {_ in })
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        pokemon = nil
+        nameLabel.text = nil
+        pokemonImage.image = nil
+    }
+    
+    /*
+    
+    func dequeueReusableCell(withReuseIdentifier identifier: String,
+                             for indexPath: IndexPath) -> UICollectionViewCell{
+        
+    }
+ */
 }

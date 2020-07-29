@@ -35,7 +35,7 @@
                                 </scopeButtonTitles>
                                 <variation key="heightClass=regular-widthClass=compact" backgroundImage="searchBar:uUR-Gn-iDc:backgroundImage"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0iL-eh-1PQ" userLabel="CollectionView">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iL-eh-1PQ" userLabel="CollectionView">
                                 <rect key="frame" x="20" y="164" width="374" height="678"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rXu-er-TOv">
