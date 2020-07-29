@@ -24,24 +24,19 @@ class Helper{
 
 class PokemonService{
     func GetPokemonByName(pokemonName:String) -> Observable<(HTTPURLResponse,Pokemon)>{
-        return RxAlamofire.requestData(.get, "https://pokeapi.co/api/v2/pokemon/\(pokemonName)").debug().map { (HTTPURLResponse, data) -> (HTTPURLResponse, Pokemon) in
-            let pokemon = try? Helper.decoder.decode(Pokemon.self, from: data)
+        return RxAlamofire.request(.get, "https://pokeapi.co/api/v2/pokemon/\(pokemonName)")
+            .validate(statusCode:200..<300)
+            .responseData()
+            .map { (HTTPURLResponse, data) -> (HTTPURLResponse, Pokemon) in
+                let pokemon = try? Helper.decoder.decode(Pokemon.self, from: data)
             return (HTTPURLResponse,pokemon!)
         };
     }
-    
-    func GetPokemonSpeciesByName(pokemonName:String) -> Observable<(HTTPURLResponse,Pokemon)>{
-        return RxAlamofire.requestData(.get, "https://pokeapi.co/api/v2/pokemon-species/").debug().map { (HTTPURLResponse, data) -> (HTTPURLResponse, Pokemon) in
-            let pokemon = try? Helper.decoder.decode(Pokemon.self, from: data)
-            return (HTTPURLResponse,pokemon!)
-        };
-    }
-
-
     
     func GetPokemons()-> Observable<(HTTPURLResponse,PokemonSearchResult)>{
         return RxAlamofire.requestDecodable(.get, "https://pokeapi.co/api/v2/pokemon?limit=2000").debug();
     }
+    /*
     
     func GetEntityById<T: NamedAPIResource>(id: Int) -> Observable<T>{
         return RxAlamofire.request(.get, "https://pokeapi.co/api/v2/\(PokemonService.GetEndpointName(t: T.self))/\(id)")
@@ -54,7 +49,9 @@ class PokemonService{
             }
             .debug();
     }
+    */
     
+    /*
     private static func GetEndpointName(t: AnyClass) -> String{
         var endPointName : String = ""
         switch (t) {
@@ -74,7 +71,9 @@ class PokemonService{
     private static func GetEndpointName(entity: AnyObject) -> String{
         return PokemonService.GetEndpointName(t: type(of:entity))
     }
-    func GetEntity<T: NamedAPIResource>(entity: T) -> Observable<T>{
+    */
+    
+   /* func GetEntity<T: NamedAPIResource>(entity: T) -> Observable<T>{
         return RxAlamofire.request(.get, "https://pokeapi.co/api/v2/\(PokemonService.GetEndpointName(entity: entity))/\(entity.id)")
             .validate(statusCode: 200..<300)
             .responseData()
@@ -84,5 +83,5 @@ class PokemonService{
               return entity
             }
             .debug();
-    }
+    }*/
 }

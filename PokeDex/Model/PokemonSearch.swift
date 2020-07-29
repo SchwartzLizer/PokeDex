@@ -23,7 +23,7 @@ class PokemonSearchItem : NamedAPIResource{
         defaultSpritesURL = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(id).png")!
     }
 }
-
+/*
 class Pokemon2 : NamedAPIResource {
     var order: Int?
     var baseExperience: Int?
@@ -49,3 +49,4 @@ class Pokemon2 : NamedAPIResource {
         try super.init(from: decoder)
     }
 }
+*/

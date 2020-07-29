@@ -17,9 +17,8 @@ public class Pokemon : Codable {
     var height: Int
     var weight: Int
     var sprites: Sprites
-    var stats : [stat]
+    var stats : [Stat]
     var types : [Type]
-   // var results : [PokemonLink]
     
     }
 
@@ -35,12 +34,6 @@ class PokemonStatVM {
         return HP+attack+defend+speed+spattack+spdefend
     }
 }
-
-/*class PokemonCompare {
-    var name : String?
-    var url : URL?
-    
-}*/
 
 class PokemonTypeVM {
     var type1 : String?
@@ -59,7 +52,7 @@ class Pokemontype : Codable{
 class NamedAPIResource : Decodable {
     var id:Int
     var name: String
-    var isLoaded = BehaviorSubject<Bool>(value:false)
+    /*var isLoaded = BehaviorSubject<Bool>(value:false)*/
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -73,6 +66,8 @@ class NamedAPIResource : Decodable {
         id = Int(url.lastPathComponent)!
     }
 }
+
+/*
 
 class Stat : NamedAPIResource{
     var gameIndex : Int
@@ -90,15 +85,15 @@ class Stat : NamedAPIResource{
         try super.init(from: decoder)
     }
 }
+*/
 
-
-class stat: Codable {
+class Stat: Codable {
     var baseStat : Int
-    var stat : statURL
+    var stat : StatURL
 	
 }
 
-class statURL: Codable {
+class StatURL: Codable {
     var name : String
 }
 
@@ -112,6 +107,7 @@ class Sprites: Codable {
     var frontShiny : URL?
     var frontShinyFemale : URL?
 }
+/*
 
 class queryableBase : Codable{
     init(name: String, url: String) {
@@ -122,9 +118,4 @@ class queryableBase : Codable{
     var name:String;
     var url:String;
 }
-
-/*class PokemonLink : Codable {
-    var name : String
-    var url : URL
-}*/
-
+*/

@@ -16,7 +16,6 @@ class PokemonDetailViewModel{
     private let _pokemonService:PokemonService
     
     let selectedPokemon = PublishSubject<PokemonSearchItem>()
-//    let selectedPokemonCompare = PublishSubject<PokemonSearchItem>()
     
     let pokemon: PublishSubject<Pokemon> = PublishSubject<Pokemon>()
     
@@ -24,7 +23,6 @@ class PokemonDetailViewModel{
     
     let pokemonType: PublishSubject<PokemonTypeVM> = PublishSubject <PokemonTypeVM>()
     
-//    let pokemonCompare: PublishSubject<PokemonCompare> = PublishSubject<PokemonCompare>()
     
     init(){
         self._pokemonService = PokemonService()
@@ -129,17 +127,4 @@ class PokemonDetailViewModel{
         })
         .disposed(by:_disposeBag)
     }
-    /*
-    public func GetPokemon(name:String){
-        
-        _pokemonService.GetPokemonByName(pokemonName: name).map { (HTTPURLResponse, Pokemon) -> Pokemon in
-            return Pokemon
-        }.subscribe(onNext:{result in
-            self.pokemon.onNext(result)
-        }, onError: {error in
-            
-        })
-        .disposed(by:_disposeBag)
-    }
- */
 }
