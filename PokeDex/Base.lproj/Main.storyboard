@@ -58,17 +58,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fqv-R1-HfN">
+                                                    <rect key="frame" x="60" y="44" width="37" height="37"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="fqv-R1-HfN" firstAttribute="leading" secondItem="6St-p6-Eno" secondAttribute="leadingMargin" constant="40" id="4Y4-kQ-Ozh"/>
                                                 <constraint firstItem="C4v-YR-TYG" firstAttribute="leading" secondItem="6St-p6-Eno" secondAttribute="leading" id="7r1-ay-sav"/>
                                                 <constraint firstItem="SVj-of-CSH" firstAttribute="leading" secondItem="C4v-YR-TYG" secondAttribute="trailing" constant="16" id="9zx-Ho-LWY"/>
                                                 <constraint firstAttribute="bottom" secondItem="C4v-YR-TYG" secondAttribute="bottom" id="DdJ-4i-ngs"/>
                                                 <constraint firstItem="SVj-of-CSH" firstAttribute="centerY" secondItem="6St-p6-Eno" secondAttribute="centerY" id="b1Q-Ws-7sh"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="SVj-of-CSH" secondAttribute="trailing" constant="16" id="pWs-t0-R50"/>
                                                 <constraint firstItem="C4v-YR-TYG" firstAttribute="top" secondItem="6St-p6-Eno" secondAttribute="top" id="v1Z-KV-Qkh"/>
+                                                <constraint firstItem="fqv-R1-HfN" firstAttribute="centerY" secondItem="6St-p6-Eno" secondAttribute="centerY" id="x1w-yn-aBh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="loadingIndicator" destination="fqv-R1-HfN" id="Qc7-d2-4R0"/>
                                             <outlet property="nameLabel" destination="SVj-of-CSH" id="JVh-rO-8dK"/>
                                             <outlet property="pokemonImage" destination="C4v-YR-TYG" id="Uxs-OB-rSX"/>
                                             <segue destination="2fq-vy-wYo" kind="show" identifier="ShowPokemonDetail" id="Piw-TA-pMl"/>
@@ -702,16 +708,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="i7T-h0-N35">
+                                <rect key="frame" x="68" y="156" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="o7m-LI-1rL" firstAttribute="top" secondItem="If5-ZK-wo4" secondAttribute="bottom" constant="20" id="2BF-xx-sop"/>
                             <constraint firstItem="6GW-2I-fX3" firstAttribute="trailing" secondItem="34B-sm-EPj" secondAttribute="trailing" constant="7" id="3hD-8t-ACv"/>
                             <constraint firstItem="lFV-1M-Bme" firstAttribute="leading" secondItem="If5-ZK-wo4" secondAttribute="trailing" constant="8" id="Aqj-Ba-SeM"/>
+                            <constraint firstItem="i7T-h0-N35" firstAttribute="top" secondItem="6GW-2I-fX3" secondAttribute="top" constant="68" id="H1R-SP-c7s"/>
                             <constraint firstItem="lFV-1M-Bme" firstAttribute="top" secondItem="6GW-2I-fX3" secondAttribute="top" constant="8" id="JUa-2H-UxM"/>
                             <constraint firstItem="If5-ZK-wo4" firstAttribute="top" secondItem="6GW-2I-fX3" secondAttribute="top" constant="8" id="QFa-bY-sP0"/>
                             <constraint firstItem="34B-sm-EPj" firstAttribute="leading" secondItem="lFV-1M-Bme" secondAttribute="trailing" constant="1" id="QgP-7i-yi6"/>
                             <constraint firstItem="o7m-LI-1rL" firstAttribute="leading" secondItem="6GW-2I-fX3" secondAttribute="leading" id="cev-Oc-kGN"/>
+                            <constraint firstItem="i7T-h0-N35" firstAttribute="leading" secondItem="6GW-2I-fX3" secondAttribute="leading" constant="68" id="eaW-im-2mL"/>
                             <constraint firstItem="34B-sm-EPj" firstAttribute="top" secondItem="6GW-2I-fX3" secondAttribute="top" constant="8" id="kGe-8y-wty"/>
                             <constraint firstItem="o7m-LI-1rL" firstAttribute="leading" secondItem="6GW-2I-fX3" secondAttribute="leading" id="m16-lr-YoS"/>
                             <constraint firstItem="o7m-LI-1rL" firstAttribute="trailing" secondItem="6GW-2I-fX3" secondAttribute="trailing" id="q7t-aQ-m7U"/>
@@ -730,6 +741,7 @@
                         <outlet property="height" destination="oZh-Gp-Mai" id="Ksz-KM-mJV"/>
                         <outlet property="hp" destination="UXf-gZ-f6T" id="lor-h1-Bs0"/>
                         <outlet property="image" destination="If5-ZK-wo4" id="K9A-V8-uF2"/>
+                        <outlet property="loadingIndicator" destination="i7T-h0-N35" id="K8d-jy-Qpf"/>
                         <outlet property="order" destination="34B-sm-EPj" id="JyD-nJ-0Rt"/>
                         <outlet property="specialAttack" destination="HYu-65-47V" id="SBJ-dm-a1y"/>
                         <outlet property="specialDefend" destination="Uhx-Nj-qCa" id="rmi-cZ-gFQ"/>
