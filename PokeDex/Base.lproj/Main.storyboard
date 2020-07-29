@@ -36,7 +36,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" backgroundImage="searchBar:uUR-Gn-iDc:backgroundImage"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iL-eh-1PQ" userLabel="CollectionView">
-                                <rect key="frame" x="20" y="164" width="374" height="678"/>
+                                <rect key="frame" x="20" y="164" width="374" height="732"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rXu-er-TOv">
                                     <size key="itemSize" width="100" height="100"/>
@@ -101,7 +101,7 @@
                             <constraint firstItem="0iL-eh-1PQ" firstAttribute="top" secondItem="uUR-Gn-iDc" secondAttribute="bottom" constant="20" id="cuY-FD-oT2"/>
                             <constraint firstItem="TPL-eX-bte" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="hkj-ND-PHB"/>
                             <constraint firstItem="uUR-Gn-iDc" firstAttribute="bottom" secondItem="TPL-eX-bte" secondAttribute="top" id="n2z-EP-j1b"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0iL-eh-1PQ" secondAttribute="bottom" constant="20" id="qjf-SY-hSs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0iL-eh-1PQ" secondAttribute="bottom" constant="-34" id="qjf-SY-hSs"/>
                             <constraint firstItem="uUR-Gn-iDc" firstAttribute="top" secondItem="pPn-XK-6tf" secondAttribute="bottom" id="yUS-HG-l4s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -119,7 +119,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
             </objects>
-            <point key="canvasLocation" x="4719.1999999999998" y="99.400299850074973"/>
+            <point key="canvasLocation" x="4718.840579710145" y="99.107142857142847"/>
         </scene>
         <!--Pokemon Detail View Controller-->
         <scene sceneID="3Cp-OO-nzS">
