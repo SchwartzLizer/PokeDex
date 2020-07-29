@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import RxAlamofire
 
-class PokeCell: UICollectionViewCell {
+class PokeCell: UITableViewCell {
     
     @IBOutlet weak var pokemonImage : UIImageView!
     @IBOutlet weak var nameLabel : UILabel!
@@ -43,12 +43,4 @@ class PokeCell: UICollectionViewCell {
         pokemonImage.image = nil
         _disposeBag = DisposeBag()
     }
-    
-    /*
-    
-    func dequeueReusableCell(withReuseIdentifier identifier: String,
-                             for indexPath: IndexPath) -> UICollectionViewCell{
-        
-    }
- */
 }

@@ -13,7 +13,7 @@ import RxCocoa
 class PokemonSearchViewController: UIViewController {
     @IBOutlet weak var pokemonSearchBar: UISearchBar!
 
-    @IBOutlet weak var pokemonCollectionView: UICollectionView!
+    @IBOutlet weak var pokemonsList: UITableView!
     
     private let _viewModel = PokemonSearchViewModel()
         
@@ -24,7 +24,7 @@ class PokemonSearchViewController: UIViewController {
         // Do any additional setup after loading the view.
         pokemonSearchBar.rx.text.orEmpty.bind(to: _viewModel.text)
         .disposed(by: _disposeBag)
-        _viewModel.filteredPokemons.asObservable().bind(to: pokemonCollectionView.rx.items(cellIdentifier: "pokecell", cellType: PokeCell.self)){index, model, cell in
+        _viewModel.filteredPokemons.asObservable().bind(to: pokemonsList.rx.items(cellIdentifier: "pokeCell", cellType: PokeCell.self)){index, model, cell in
             
             cell.configureCell(pokemon: model)
             
@@ -47,7 +47,7 @@ class PokemonSearchViewController: UIViewController {
             guard let selectedPokemonCell = sender as? PokeCell else{
                 fatalError("Unexpected sender: \(sender)")
             }
-            guard let indexPath = pokemonCollectionView.indexPath(for: selectedPokemonCell) else{
+            guard let indexPath = pokemonsList.indexPath(for: selectedPokemonCell) else{
                 fatalError("The selected cell is not being display by the collectionView")
             }
             pokemonDetailViewController._viewModel.selectedPokemon.onNext(selectedPokemonCell.pokemon)
