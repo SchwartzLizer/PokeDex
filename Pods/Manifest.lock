@@ -1,5 +1,13 @@
 PODS:
   - Alamofire (5.2.2)
+  - AppCenter (3.3.4):
+    - AppCenter/Analytics (= 3.3.4)
+    - AppCenter/Crashes (= 3.3.4)
+  - AppCenter/Analytics (3.3.4):
+    - AppCenter/Core
+  - AppCenter/Core (3.3.4)
+  - AppCenter/Crashes (3.3.4):
+    - AppCenter/Core
   - RxAlamofire (5.6.0):
     - RxAlamofire/Core (= 5.6.0)
   - RxAlamofire/Core (5.6.0):
@@ -16,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - AppCenter
   - RxAlamofire
   - RxBlocking (~> 5)
   - RxCocoa (~> 5)
@@ -24,6 +33,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AppCenter
     - RxAlamofire
     - RxBlocking
     - RxCocoa
@@ -32,12 +42,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  AppCenter: 0487be185c038ed2ecc5ed38219af1dcd280af23
   RxAlamofire: f34ddbab56fa2a36f99737f4d4ecc22288a1384f
   RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: ca52e86002a8243338585b69d4b24e057bc4dab9
+PODFILE CHECKSUM: bd592159dd396f107a87c314c449d8eb2e128bdb
 
 COCOAPODS: 1.9.3

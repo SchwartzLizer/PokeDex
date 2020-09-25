@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  AppDelegate.swift``
 //  PokeDex
 //
 //  Created by Tanatip Denduangchai on 7/22/20.
@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        MSAppCenter.start("62244753-5504-4f44-92e4-823e0f14bfc5", withServices:[
+          MSAnalytics.self,
+          MSCrashes.self
+        ])
         // Override point for customization after application launch.
         return true
     }
